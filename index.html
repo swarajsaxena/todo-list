@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>Todo app</title>
+</head>
+
+<body>
+
+  <div class="background-image">
+    <img class="bkg-img" src="./images/bg-desktop-dark.jpg" alt="" srcset="">
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <div class="title">TODO</div>
+      <div class="theme">
+        <img src="./images/icon-sun.svg" alt="" srcset="">
+      </div>
+    </div>
+    <div class="new-todo">
+      <div class="check">
+        <div class="checkmark"></div>
+      </div>
+
+      <div class="new-todo-input">
+        <form onsubmit="addItem(event)">
+          <input id="todo-input" type="text" placeholder="Create a new todo..." />
+        </form>
+      </div>
+
+    </div>
+    <div class="todo-items-wrapper">
+      <div class="todo-items">
+
+      </div>
+      <div class="todo-items-info">
+        <div class="items-left"><span class="item-number">5</span> Items</div>
+        <div class="items-statuses">
+          <span class="active">All</span>
+          <span>Active</span>
+          <span>Completed</span>
+        </div>
+        <div class="items-clear">
+          <span>Clear</span>
+          <span>Completed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-analytics.js";
+
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
