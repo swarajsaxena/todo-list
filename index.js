@@ -8,9 +8,6 @@ const firebaseConfig = {
   measurementId: "G-RYV60YJYJ2",
 };
 
-// Initialize Firebase
-// const analytics = getAnalytics(app);
-
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
@@ -40,11 +37,11 @@ function getItems() {
       });
     });
     document.querySelector(".item-number").innerText = items.length;
-    generateIte(items);
+    generateItem(items);
   });
 }
 
-function generateIte(items) {
+function generateItem(items) {
   let itemsHTML = "";
   items.forEach((item) => {
     itemsHTML += `
@@ -59,6 +56,11 @@ function generateIte(items) {
           <div class="todo-text ${
             item.status == "complete" ? "checked" : ""
           }">${item.text}</div>
+          <div class="dlt-btn-container">
+            <div class="dlt-btn" data-id="${item.id}">
+              <img class="dlt-img" src="images/icon-delete.svg" alt="" srcset="">
+            </div>
+          </div>
       </div>
       
       `;
@@ -72,11 +74,23 @@ function createEventListeners() {
   let todoCheckMarks = document.querySelectorAll(".todo-item .checkmark");
   todoCheckMarks.forEach((checkmark) => {
     checkmark.addEventListener("click", () => {
-      console.log(checkmark.dataset.id);
+      // console.log(checkmark.dataset.id);
       markCompleted(checkmark.dataset.id);
     });
   });
+
+  let dltButtons = document.querySelectorAll(".dlt-btn");
+  dltButtons.forEach((dltBtn) => {
+    dltBtn.addEventListener("click", () => {
+      console.log(dltBtn.dataset.id);
+      dltTodo(dltBtn.dataset.id);
+    });
+  });
 }
+
+const dltTodo = (id) => {
+  db.collection("todo-items").doc(id).delete();
+};
 
 const markCompleted = (id) => {
   // from a database
@@ -84,15 +98,12 @@ const markCompleted = (id) => {
   item.get().then((doc) => {
     // console.log("inside then()");
     if (doc.exists) {
-      console.log("it is active");
       let status = doc.data().status;
-      console.log(status);
       if (status == "active") {
         item.update({
           status: "complete",
         });
       } else if (status == "complete") {
-        console.log("it is completed");
         item.update({
           status: "active",
         });

@@ -114,6 +114,11 @@ body {
     visibility: visible;
 }
 
+.todo-text {
+    width: 100%;
+    /* border: 1px solid; */
+}
+
 .todo-text.checked {
     text-decoration: line-through;
     color: hsl(233, 14%, 35%);
@@ -162,6 +167,7 @@ body {
 .todo-item {
     display: flex;
     height: 70px;
+    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid hsla(233, 14%, 35%, 0.548);
     background: hsl(235, 24%, 19%);
@@ -174,6 +180,39 @@ body {
     box-shadow: 0 0 7px hsl(235, 21%, 11%);
     transform: translateY(-2px);
     border-color: hsl(235, 21%, 11%);
+}
+
+.dlt-btn-container {
+    width: 70px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid; */
+}
+
+.todo-item:hover .dlt-btn {
+    visibility: visible;
+}
+
+.dlt-btn {
+    visibility: hidden;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid;
+}
+
+.dlt-btn:hover {
+    background: linear-gradient(rgb(255, 72, 0), rgb(236, 8, 8));
+}
+
+.dlt-img {
+    width: 10px;
 }
 
 .todo-items-info {
