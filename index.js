@@ -41,35 +41,6 @@ function getItems() {
   });
 }
 
-function generateItem(items) {
-  let itemsHTML = "";
-  items.forEach((item) => {
-    itemsHTML += `
-      <div class="todo-item">
-          <div class="check">
-            <div class="checkmark ${
-              item.status == "complete" ? "checked" : ""
-            } " data-id="${item.id}">
-              <img src="images/icon-check.svg" alt="">
-            </div>
-          </div>
-          <div class="todo-text ${
-            item.status == "complete" ? "checked" : ""
-          }">${item.text}</div>
-          <div class="dlt-btn-container">
-            <div class="dlt-btn" data-id="${item.id}">
-              <img class="dlt-img" src="images/icon-delete.svg" alt="" srcset="">
-            </div>
-          </div>
-      </div>
-      
-      `;
-  });
-
-  document.querySelector(".todo-items").innerHTML = itemsHTML;
-  createEventListeners();
-}
-
 function createEventListeners() {
   let todoCheckMarks = document.querySelectorAll(".todo-item .checkmark");
   todoCheckMarks.forEach((checkmark) => {
